@@ -1,0 +1,126 @@
+# Next.js 15 Markdown Boilerplate
+
+A minimal Next.js 15 application that renders content from Markdown files, styled with Tailwind CSS.
+
+## Requirements
+
+- Node.js 18+
+- npm 9+
+
+## Project Structure
+
+```
+my-markdown-app/
+├── app/
+│   ├── globals.css    # Global styles and Tailwind imports
+│   ├── layout.tsx     # Root layout with shared styling
+│   ├── page.mdx      # Home page content
+│   └── about.mdx     # About page content
+├── tailwind.config.js
+├── next.config.mjs
+├── package.json
+└── tsconfig.json
+```
+
+## Core Files Explained
+
+### 1. `app/globals.css`
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add any custom global styles below */
+```
+
+### 2. `app/layout.tsx`
+
+```tsx
+import './globals.css'
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <main className="max-w-4xl mx-auto px-4 py-8">
+          {children}
+        </main>
+      </body>
+    </html>
+  )
+}
+```
+
+### 3. Example MDX page (`app/page.mdx`)
+
+```mdx
+# Welcome
+This is a markdown page.
+```
+
+### 4. `next.config.mjs`
+
+```javascript
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  pageExtensions: ['mdx', 'tsx'],
+};
+
+export default nextConfig;
+```
+
+## Setup
+
+### 1. Install dependencies
+
+```bash
+npm install next@15 react react-dom typescript @types/react @types/node tailwindcss postcss autoprefixer @next/mdx @mdx-js/loader
+```
+
+### 2. Initialize Tailwind CSS
+
+```bash
+npx tailwindcss init -p
+```
+
+### 3. Run development server
+
+```bash
+npm run dev
+```
+
+Visit <http://localhost:3000>
+
+### 4. Build for production
+
+```bash
+npm run build
+npm start
+```
+
+## Creating Content
+
+Add new pages by creating `.mdx` files in the `app` directory. The file name becomes the URL path:
+
+- `app/page.mdx` → `/`
+- `app/about.mdx` → `/about`
+
+## Available Scripts
+
+- `npm run dev`: Start development server
+- `npm run build`: Build for production
+- `npm run start`: Start production server
+
+This setup works because:
+
+- Next.js 15 has built-in MDX support
+- The root layout (`layout.tsx`) handles all page structure and styling
+- Tailwind provides utility classes that can be used directly in MDX files
+- Each MDX file automatically becomes a route in your application
+
+This boilerplate provides everything needed for a Markdown-based Next.js site with zero unnecessary complexity.

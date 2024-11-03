@@ -1,0 +1,24 @@
+{
+  "name": "nextjs-markdown-boilerplate",
+  "version": "1.0.0",
+  "description": "A simple Next.js boilerplate with MDX support",
+  "main": "next.config.mjs",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@mdx-js/loader": "^3.1.0",
+    "@next/mdx": "^15.0.2",
+    "@types/node": "^22.8.7",
+    "@types/react": "^18.3.12",
+    "autoprefixer": "^10.4.20",
+    "next": "^15.0.2",
+    "postcss": "^8.4.47",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3"
+  }
+}
