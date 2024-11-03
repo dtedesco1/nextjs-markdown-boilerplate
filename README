@@ -79,7 +79,8 @@ export default nextConfig;
 ### 1. Install dependencies
 
 ```bash
-npm install next@15 react react-dom typescript @types/react @types/node tailwindcss postcss autoprefixer @next/mdx @mdx-js/loader
+npm install next@15 react react-dom typescript @types/react @types/node tailwindcss postcss autoprefixer @next/mdx @mdx-js/loader daisyui
+npm install -D @tailwindcss/typography
 ```
 
 ### 2. Initialize Tailwind CSS
