@@ -3,13 +3,16 @@ import { existsSync } from 'fs'
 import { join } from 'path'
 
 interface PageProps {
-    params: {
+    params: Promise<{
+        slug: string[]
+    }> | {
         slug: string[]
     }
 }
 
 export default async function Page({ params }: PageProps) {
-    const slug = params.slug.join('/')
+    const resolvedParams = await Promise.resolve(params)
+    const slug = resolvedParams.slug.join('/')
     const filePath = join(process.cwd(), 'app/content', `${slug}.mdx`)
 
     if (!existsSync(filePath)) {

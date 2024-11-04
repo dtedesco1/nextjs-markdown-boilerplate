@@ -1,13 +1,12 @@
 # Next.js 15 Markdown Boilerplate
 
-A minimal Next.js 15 application that renders content from Markdown files, styled with Tailwind CSS.
-
-It's just markdown files in a `app/content` directory. The file name becomes the URL path. You can add React components to the markdown directly.
+A minimal Next.js 15 application that renders content from Markdown files.
 
 ## Features
 
-- Render Markdown files as pages
-- Add React components anywhere in the Markdown
+- Render Markdown files as dynamic pages
+- Add React components anywhere in your Markdown
+- The folder structure becomes the URL path
 - Global styles using Tailwind CSS and DaisyUI
 
 ## How to use it
@@ -16,7 +15,7 @@ I'm lazy, so I made this extremely simple.
 
 ### Pages
 
-Just write some markdown in a `.mdx` file.
+Just write some markdown in a `.mdx` file, and it will automatically become a properly styled page.
 
 ```mdx
 # My Page
@@ -39,7 +38,11 @@ Add custom React components to the `components` directory. Then, import them at 
 ```mdx
 import MyComponent from '../components/my-component'
 
+**Hey**, here's a component:
+
 <MyComponent />
+
+*And here's some more markdown content.*
 ```
 
 ## Requirements
@@ -88,8 +91,8 @@ my-markdown-app/
 │   │   └── index.mdx  # Home page content
 │   ├── globals.css    # Global styles and Tailwind imports
 │   ├── layout.tsx     # Root layout with shared styling
-│   └── page.mdx       # Home page content
-├── components       # Add custom React components here
+│   └── page.mdx       # Home page content (renders index.mdx at root)
+├── components       # Add custom React components in this directory
 ├── mdx-components.tsx # Sets up MDX components
 ├── next.config.mjs    # Next.js configuration  
 ├── package.json       # Project dependencies
