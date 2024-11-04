@@ -1,30 +1,39 @@
 import ConwayGame from '../components/conway'
+import TallyButton from '../components/tally-button'
+import RenderHomepageCode from '../components/render-homepage-code'
 
 # Welcome
 
-This is a markdown page.
+This is a markdown file with some interactive React components.
 
 ## Section
 
 - List item 1
 - List item 2
 
-[A link](https://example.com)
-
-Some `inline code` and:
+[A link to another page](/another-page)
 
 ```js
 console.log('A code block');
 ```
 
-<button className="btn">Click me</button>
-
 An image:
 
-![A test image](https://unsplash.it/1024/768)
+![A test image](https://unsplash.it/640/480)
 
-# Conway's Game of Life
+## But it doesn't stop there...
 
-An implementation of Conway's Game of Life as a React component.
+We can add client side interactive React components:
+
+<TallyButton />
+
+
+### Conway's Game of Life
 
 <ConwayGame />
+
+## And server side components...
+
+The code for this whole page is just markdown with React components whenever I want more dynamic content (shown below using a server side component):
+
+<RenderHomepageCode />

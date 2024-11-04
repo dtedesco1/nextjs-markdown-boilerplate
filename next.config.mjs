@@ -1,5 +1,18 @@
 import createMDX from '@next/mdx'
 
-export default createMDX()(/** @type {import('next').NextConfig} */({
-    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx']
-}))
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+    experimental: {
+        mdxRs: true // Enable Rust-based MDX compiler
+    }
+}
+
+const withMDX = createMDX({
+    extension: /\.mdx?$/,
+    options: {
+        // Optionally configure any MDX options here
+    }
+})
+
+export default withMDX(nextConfig)
