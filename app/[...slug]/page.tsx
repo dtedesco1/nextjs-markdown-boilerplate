@@ -1,26 +1,19 @@
 import { notFound } from 'next/navigation'
 import { existsSync } from 'fs'
 import { join } from 'path'
+import { PageProps as NextPageProps } from '@/.next/types/app/[...slug]/page'
 
-interface PageProps {
-    params: Promise<{
-        slug: string[]
-    }> | {
-        slug: string[]
-    }
-}
-
-export default async function Page({ params }: PageProps) {
-    const resolvedParams = await Promise.resolve(params)
-    const slug = resolvedParams.slug.join('/')
-    const filePath = join(process.cwd(), 'app/content', `${slug}.mdx`)
+export default async function Page({ params }: NextPageProps) {
+    const { slug } = await params
+    const path = slug.join('/')
+    const filePath = join(process.cwd(), 'app/content', `${path}.mdx`)
 
     if (!existsSync(filePath)) {
         notFound()
     }
 
     try {
-        const Content = (await import(`@/app/content/${slug}.mdx`)).default
+        const Content = (await import(`@/app/content/${path}.mdx`)).default
         return <Content />
     } catch (e) {
         notFound()
