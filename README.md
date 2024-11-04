@@ -101,6 +101,20 @@ my-markdown-app/
 └── tsconfig.json      # TypeScript configuration
 ```
 
+## Contributing
+
+Pull requests are welcome.
+
 ## License
 
 MIT
+
+## Release Notes
+
+### 1.0.0
+
+- Initial release
+- Render Markdown files as dynamic pages
+- Add React components anywhere in your Markdown
+- The folder structure becomes the URL path
+- Global styles using Tailwind CSS and DaisyUI
