@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start"
   },
+  "postcss": "postcss.config.js",
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
     "@next/mdx": "^15.0.2",

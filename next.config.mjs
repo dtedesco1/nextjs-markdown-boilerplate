@@ -10,9 +10,6 @@ const nextConfig = {
 
 const withMDX = createMDX({
     extension: /\.mdx?$/,
-    options: {
-        // Optionally configure any MDX options here
-    }
 })
 
 export default withMDX(nextConfig)

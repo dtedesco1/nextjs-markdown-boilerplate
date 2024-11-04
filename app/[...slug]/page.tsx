@@ -1,41 +1,25 @@
-import { readFileSync, existsSync, readdirSync } from 'fs'
-import { join } from 'path'
 import { notFound } from 'next/navigation'
-
-// Get all MDX files in the app directory
-async function getMDXPaths() {
-    const files = readdirSync(join(process.cwd(), 'app'))
-        .filter(file => file.endsWith('.mdx'))
-        .map(file => file.replace('.mdx', ''))
-    return files
-}
-
-export async function generateStaticParams() {
-    const paths = await getMDXPaths()
-    return paths.map(path => ({
-        slug: [path]
-    }))
-}
+import { existsSync } from 'fs'
+import { join } from 'path'
 
 interface PageProps {
-    params: Promise<{ slug: string[] }>
+    params: {
+        slug: string[]
+    }
 }
 
 export default async function Page({ params }: PageProps) {
-    // Handle async params
-    const resolvedParams = await params
-    const slug = resolvedParams.slug.join('/')
-    const filePath = join(process.cwd(), 'app', `${slug}.mdx`)
+    const slug = params.slug.join('/')
+    const filePath = join(process.cwd(), 'app/content', `${slug}.mdx`)
 
     if (!existsSync(filePath)) {
         notFound()
     }
 
-    const Component = await import(`../${slug}.mdx`)
-
-    return (
-        <article className="prose prose-lg dark:prose-invert">
-            <Component.default />
-        </article>
-    )
+    try {
+        const Content = (await import(`@/app/content/${slug}.mdx`)).default
+        return <Content />
+    } catch (e) {
+        notFound()
+    }
 }
