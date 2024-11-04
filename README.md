@@ -75,7 +75,7 @@ npm start
 
 I tried to make this as simple as possible, given the constraints of modern web development.
 
-```
+```bash
 my-markdown-app/
 .
 ├── README
