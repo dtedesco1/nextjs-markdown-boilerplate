@@ -9,6 +9,8 @@ A minimal Next.js 15 application that renders content from Markdown files.
 - The folder structure becomes the URL path
 - Global styles using Tailwind CSS and DaisyUI
 
+**See a live example at [nextjs-markdown-boilerplate.vercel.app/](https://nextjs-markdown-boilerplate.vercel.app/)**
+
 ## How to use it
 
 I'm lazy, so I made this extremely simple.
