@@ -47,11 +47,40 @@ import MyComponent from '../components/my-component'
 *And here's some more markdown content.*
 ```
 
+### Next.js 15 Async API Caveats
+
+In Next.js 15, dynamic APIs like `params` and `searchParams` are now asynchronous. The boilerplate handles this automatically in the page component, but if you add custom logic:
+
+```tsx
+// In a page or layout
+export default async function Page({ params, searchParams }) {
+  const { slug } = await params  // Await params
+  const { query } = await searchParams  // Await searchParams
+  // Your code
+}
+```
+
+For static behavior, avoid using `cookies()`, `headers()`, `draftMode()` in layouts or pages unless necessary.
+
+### Static vs Dynamic Behavior
+
+This boilerplate is static-first: pages are pre-rendered at build time. If you need dynamic features (e.g., user-specific content), opt into dynamic rendering by using the async APIs above or adding `export const dynamic = 'force-dynamic'` to a page.
+
+### Optional Recipes
+
+- **SEO/Sitemap**: Add `next-sitemap` for automatic sitemap generation.
+- **Analytics**: Integrate with Vercel Analytics or Google Analytics.
+- **Testing**: Add Vitest with `npm install -D vitest @testing-library/react`.
+- **Linting**: Run `npm run lint` (already configured).
+- **Static Export**: For non-server deployments, add `output: 'export'` to `next.config.mjs` (note: disables server features).
+
 ## Requirements
 
 - Node.js 18+
 - npm 9+
 - TypeScript
+- React 19
+- Next.js 15
 
 ## Setup
 
@@ -112,6 +141,12 @@ Pull requests are welcome.
 MIT
 
 ## Release Notes
+
+### 1.1.0
+- Upgrade to latest stable: Next.js 15.5.2, React 19.1.1, @next/mdx 15.5.2, @mdx-js/loader 3.1.1, DaisyUI 5.0.54, PostCSS 8.5.6, Autoprefixer 10.4.21, ESLint 9.34.0, eslint-config-next 15.5.2, updated React type packages.
+- React 19 compatibility: error boundary uses `unknown` for error prop with safe access.
+- Next 15 compatibility: async `params` normalization in catch‑all page.
+- Static-first defaults preserved; no experimental flags.
 
 ### 1.0.0
 
