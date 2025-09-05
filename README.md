@@ -82,9 +82,9 @@ This boilerplate is static-first: pages are pre-rendered at build time. If you n
 - React 19
 - Next.js 15
 
-## "Argh! I'm so angry your using Nextjs and calling it simple!!"
+## "Argh, I'm so angry you're using Nextjs and calling it simple!"
 
-I hear you. much simpler markdown rendering solutions abound, but I'm stuck with React bloat because:
+I hear you. Much simpler markdown rendering solutions abound, but I'm stuck with React bloat because:
 
 1. I want to edit the pages sometimes, and I want to do so using markdown without extra steps.
 
@@ -92,7 +92,7 @@ I hear you. much simpler markdown rendering solutions abound, but I'm stuck with
 
 3. I want it to be really easy to deploy and monitor. Nextjs is really easy for those things.
 
-Solving the first issue and third issues don’t require React, but the second definitely does.
+Solving the first issue and third issues don’t require React, but the second definitely does. More discussion about this on [Hacker News](https://news.ycombinator.com/item?id=45071592)
 
 ## Setup
 
